@@ -173,6 +173,7 @@ Der Vektor-Index ist **abgeleitet und wegwerfbar** — `dokbot reindex` baut ihn
 │  Web-UI · Approvals · SSO · Analytics            │
 │  Graph-Viz · Multi-Tenant · Hosting              │
 └──────────────────────────────────────────────────┘
+```
 
 ## Tech-Stack
 
