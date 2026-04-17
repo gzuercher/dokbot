@@ -4,15 +4,7 @@
 
 Dokbot ist ein KI-gestützter Wissensverwalter für Organisationen (10–50 Personen). Er nimmt internes Know-how entgegen, strukturiert es als Markdown in Git und macht es für Menschen und Maschinen zugänglich.
 
-**Geschäftsmodell**: Open Core (AGPL) + Managed Hosting durch Raptus AG.
-**Lizenz**: AGPL-3.0 (Community), proprietär (Pro).
-
-| Stufe | Inhalt | Preis |
-|-------|--------|-------|
-| Community (AGPL) | Core-Agent, CLI, Git-Storage, MCP-Server (read) | Gratis |
-| Pro-Lizenz | Web-UI, Freigabe-Workflows, SSO, Analytics | CHF 15–30/User/Monat |
-| Managed Hosting | Betrieb inkl. Updates, Backups, Monitoring | CHF 200–800/Monat |
-| Consulting | Setup, Migration, Schulung | Stundenhonorar |
+**Lizenz**: AGPL-3.0 (Community), proprietär (Pro). Open-Core-Modell.
 
 ---
 
