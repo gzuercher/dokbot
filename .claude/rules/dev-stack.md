@@ -1,85 +1,61 @@
 ---
-description: Tech Stacks, Build-Commands und Projektstruktur für Entwicklungsprojekte
-globs: "*.ts,*.tsx,*.js,*.jsx,*.php,*.blade.php,package.json,composer.json"
+description: Tech Stack, Build-Commands und Projektstruktur für Dokbot
+globs: "*.ts,*.tsx,*.js,*.jsx,package.json,tsconfig.json"
 ---
 
 # Entwicklungs-Stack
 
-## Tech Stacks
+## Tech Stack
 
-### Next.js (Standard für neue Projekte)
-- Framework: Next.js (App Router) mit TypeScript
-- Styling: Tailwind CSS
+- Runtime: Node.js (>=20)
+- Sprache: TypeScript (strict mode)
 - Paketmanager: pnpm
+- Monorepo: Turborepo
 - Linting: ESLint, Prettier
-- Tests: vitest, React Testing Library
-- ORM: Prisma oder Drizzle
-- Auth: NextAuth.js / Auth.js
+- Tests: vitest
 - Validierung: zod
 
-### PHP (Legacy und Laravel)
-- WordPress: Theme/Plugin-Entwicklung, WooCommerce
-- Laravel: Composer, PHPUnit, Laravel Pint
-- Custom PHP: PSR-12 Standard
+### Core Dependencies
+- LLM-Abstraktion: Vercel AI SDK (`ai`)
+- Vektor-Index: LanceDB
+- Git: isomorphic-git
+- CLI: Commander.js
+- MCP: @modelcontextprotocol/sdk
+- API: Hono
 
 ## Build & Test Commands
 
-### Next.js
 ```bash
 pnpm install        # Install dependencies
-pnpm dev            # Development server
+pnpm dev            # Development (watch mode)
 pnpm build          # Production build
 pnpm test           # Run tests
 pnpm lint           # Linting
 pnpm format         # Prettier
 ```
 
-### Laravel
-```bash
-composer install     # Install dependencies
-php artisan serve    # Dev server
-php artisan test     # Run tests
-./vendor/bin/pint    # Formatting
-```
+## Monorepo-Struktur
 
-### WordPress
-```bash
-composer install     # Install dependencies (if Composer is used)
-npm run build        # Asset build (if available)
+```
+packages/
+├── core/             # Dokbot Core: LLM-Agent, Git-Storage, Indexing
+├── cli/              # CLI: Commander.js basiert
+└── mcp-server/       # MCP-Server: Knowledge Base als MCP-Ressource
 ```
 
 ## Verifikation
 
 Prüfe JEDE Änderung bevor du sie als fertig meldest:
-1. Build muss durchlaufen
-2. Linting muss bestehen
-3. Falls UI-Änderung: beschreibe was du visuell erwartest
+1. Build muss durchlaufen (`pnpm build`)
+2. Linting muss bestehen (`pnpm lint`)
+3. Tests müssen grün sein (`pnpm test`)
 
 ## Verbotene Eigenimplementierungen
 
-Baue folgendes NIEMALS selbst. Verwende die genannte Bibliothek oder frage nach:
-
 | Thema | Verwende stattdessen |
 |---|---|
-| Auth/Login | NextAuth.js / Auth.js (Next.js), Laravel Sanctum (PHP) |
-| Passwort-Hashing | bcrypt, argon2 |
-| JWT | jose |
-| E-Mail | Resend, Postmark |
-| Zahlungen | Stripe SDK |
-| Datei-Upload | UploadThing, presigned URLs |
-| Rate Limiting | @upstash/ratelimit, Laravel throttle |
-| Validierung | zod (TS), Laravel Validation (PHP) |
-
-## Projektstruktur (Next.js)
-
-```
-src/
-├── app/              # App Router pages and layouts
-├── components/
-│   ├── ui/           # Reusable UI components
-│   └── features/     # Domain-specific components
-├── lib/              # Utility functions, configurations
-├── hooks/            # Custom React hooks
-├── types/            # TypeScript types
-└── server/           # Server logic, DB queries, services
-```
+| LLM-Aufrufe | Vercel AI SDK (nie direkt fetch auf LLM-APIs) |
+| Git-Operationen | isomorphic-git (nie shell-exec von git) |
+| Validierung | zod |
+| Vektor-Suche | LanceDB |
+| MCP-Protokoll | @modelcontextprotocol/sdk |

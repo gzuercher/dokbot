@@ -1,6 +1,6 @@
-# Raptus AG – Claude Code Playbook
+# Dokbot – Claude Code Playbook
 
-Du arbeitest an einem Projekt der Raptus AG. Diese Regeln gelten immer — unabhängig von Rolle oder Projekttyp.
+Du arbeitest an **Dokbot**, einem KI-gestützten Dokumentations-Bot für Organisationswissen. Ein Produkt der Raptus AG. Diese Regeln gelten immer.
 
 ## Grundhaltung
 
