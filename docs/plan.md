@@ -73,6 +73,12 @@ Dokbot ist **domänenagnostisch**: Welche Wissenstypen verwaltet werden, bestimm
 - `dokbot init --template <pack>` — Initialisiert mit vordefiniertem Template-Pack
 - `.dokbot/config.yaml` — LLM-Provider, Template-Pack, Sprache
 
+#### 6. Integrated Safety & Secret Scanning
+- Input-Filter: Automatischer technischer Scan auf bekannte Muster (Regex) von API-Keys, Tokens und Passwörtern vor jedem Git-Commit.
+- Refusal-Mode: Der Koordinator-Agent wird instruiert, sensible Daten-Muster proaktiv zu erkennen und die Speicherung mit einem Hinweis auf sicherere Alternativen (z. B. Passwort-Manager) zu verweigern.
+- Privacy-First: Implementierung einer standardmässigen Warnung bei der Nutzung von Cloud-LLMs, falls der Inhalt als potenziell sensibel eingestuft wird, sowie die Förderung lokaler Inferenz-Optionen.
+
+
 ### Bewusst NICHT im MVP
 
 | Feature | Geplant für |
@@ -347,6 +353,9 @@ Dokbot verwendet ein **Multi-Agent-System** mit klarer Arbeitsteilung. Ein Koord
 - **Agenten sind zusammensetzbar** — der Koordinator kann mehrere Agenten sequenziell oder parallel einsetzen
 - **Domänen-Agenten werden dynamisch geladen** — basierend auf den konfigurierten Template-Packs
 - **Implementierung via Vercel AI SDK** — Multi-Agent-Orchestrierung mit Tool-Calling
+- **Hard-Gate vor Persistierung:** Jede Information durchläuft eine Sanitizer-Middleware, bevor sie vom `Git-Agent` geschrieben wird.
+- **Identitäts-Wahrung:** Da Git-Commits permanent sind, muss die Erkennung zwingend *vor* dem ersten Commit erfolgen, um aufwendige Bereinigungen der Historie zu vermeiden.
+- **Transparente Inferenz:** Nutzer werden über den Verarbeitungsort ihrer Daten (Lokal vs. Cloud) aufgeklärt, um die Einhaltung interner Compliance-Richtlinien zu gewährleisten.
 
 ### Koordinator-Agent
 
