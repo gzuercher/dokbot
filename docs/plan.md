@@ -736,6 +736,7 @@ Besondere Anforderungen an die LLM-Anbindung in regulierten Umgebungen:
 - [x] GitHub-Repo erstellt: github.com/gzuercher/dokbot
 - [x] Playbook-Basis vom Raptus Claude Playbook übernommen
 - [x] Use Cases abgenommen (2026-04-17, können später noch angepasst werden)
+- [ ] Im Raptus Team dieses Konzept fertig stellen
 - [ ] Detaillierte Architektur ausarbeiten
 - [ ] Prompt-Design für den KI-Agent
 - [ ] Datenmodell im Detail (Frontmatter-Schema, Config-Format)
